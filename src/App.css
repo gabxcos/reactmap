@@ -1,0 +1,138 @@
+/****************/
+/* MOBILE + TABLET (SMALL SCREENS) */
+/****************/
+@media only screen and (max-width: 1000px){
+	.Menu {
+		left: -100%;
+		max-width: 100%;
+		position: fixed;
+		top: 0;
+		width: 600px;
+		z-index: 1000;
+	}
+	.Menu.active {
+		left: 0;
+	}
+	.Menu header .menuHamburger {
+		height: auto;
+		left: 0;
+		padding: 30px;
+		position: fixed;
+		top: 0;
+		width: 70px;
+		z-index: 1001;
+	}
+	.Menu header .logo {
+		margin: 20px 20px 20px 130px;
+		max-width: calc(100% - 160px);
+	}
+	.Map {
+		width: 100%;
+	}
+}
+/****************/
+/* DESKTOP + TV (BIG SCREENS)*/
+/****************/
+@media only screen and (min-width: 1001px){
+	.App {
+		display: flex;
+		flex-flow: row wrap;
+	}
+	.Menu {
+		flex: 1 0px;
+	}
+	.Menu header .menuHamburger {
+		display: none;
+	}
+	.Menu header .logo {
+		margin: 40px 40px 0;
+	}
+	.Map {
+		flex: 2 0px;
+	}
+}
+/****************/
+/* GENERAL CSS FOR ALL VIEWPORTS */
+/****************/
+/***** APP *****/
+/****************/
+.App {
+	height: 100vh;
+	width: 100%;
+}
+.Menu, .Map {
+	height: 100%;
+}
+/****************/
+/***** MENU *****/
+/****************/
+.Menu {
+	background-color: #444;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+/****************/
+.Menu header .logo {
+	width: calc(100% - 80px);
+}
+/****************/
+.infobox {
+	background-color: #ccc;
+	border: 4px dotted #aaa;
+	border-radius: 15px;
+	font-style: oblique;
+	font-weight: lighter;
+	margin: 20px 50px 0;
+	padding: 10px;
+	width: calc(100% - 128px);
+}
+/****************/
+.menuFilter {
+	display: flex;
+	flex-flow: row wrap;
+}
+.menuFilter > div {
+	flex: 1 auto;
+	padding: 20px;
+}
+.menuFilter h3 {
+	color: #fff;
+	font-size: 25px;
+	font-weight: lighter;
+	margin: 10px;
+}
+.Menu input, .Menu select {
+	border: 0;
+	border-radius: 10px;
+	font-size: 16px;
+	font-style: oblique;
+	height: 45px;
+	max-width: calc(100% - 50px);
+	min-width: 180px;
+	padding: 0;
+	text-align: center;
+	width: 100%;
+}
+/****************/
+.menuList h3 {
+	color: #fff;
+	font-size: 25px;
+	font-weight: lighter;
+	margin: 10px;
+}
+.menuList > ul {
+	list-style-type: none;
+	padding: 0;
+}
+.menuList li a {
+	color: white;
+	text-decoration: none;
+}
+.menuList li h2 {
+	background-color: #333;
+	border: 2px dotted #222;
+	border-radius: 10px;
+	font-weight: lighter;
+	margin: 20px 50px;
+	padding: 10px 0;
+}

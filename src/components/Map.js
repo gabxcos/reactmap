@@ -15,9 +15,10 @@ class Map extends Component {
   render() {
     return (
       // Important! Always set the container height explicitly
-      <div
-				className={this.props.className}
-				style={{ height: '100vh', width: '100%' }}
+      <section
+				className="Map"
+				style={{ height: '100vh'}}
+				role="application"
 			>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyDPd4HcMgw5Xkiv-LAbAm5Mr6XdQMx1Vfg' }}
@@ -30,7 +31,7 @@ class Map extends Component {
             text={'Kreyser Avrora'}
           />
         </GoogleMapReact>
-      </div>
+      </section>
     );
   }
 }
