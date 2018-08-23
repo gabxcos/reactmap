@@ -1,0 +1,98 @@
+[
+	{
+		"id": 1,
+		"name": "Fontana dell'Elefante",
+		"category": "MONUMENT",
+		"lat": 37.5025005,
+		"lng": 15.084887,
+		"pageid": 551173
+	},
+	{
+		"id": 2,
+		"name": "Piazza del Duomo",
+		"category": "SQUARE",
+		"lat": 37.5022096,
+		"lng": 15.085036,
+		"pageid": 526112
+	},
+	{
+		"id": 3,
+		"name": "Palazzo Biscari",
+		"category": "BUILDING",
+		"lat": 37.5023705,
+		"lng": 15.0884601,
+		"pageid": 377458
+	},
+	{
+		"id": 4,
+		"name": "Castello Ursino",
+		"category": "BUILDING",
+		"lat": 37.4990948,
+		"lng": 15.08368,
+		"pageid": 439705
+	},
+	{
+		"id": 5,
+		"name": "Porta Garibaldi",
+		"category": "MONUMENT",
+		"lat": 37.4996945,
+		"lng": 15.0717358,
+		"pageid": 2602913
+	},
+	{
+		"id": 6,
+		"name": "Teatro Massimo Vincenzo Bellini",
+		"category": "BUILDING",
+		"lat": 37.504211,
+		"lng": 15.0878178,
+		"pageid": 381694
+	},
+	{
+		"id": 7,
+		"name": "Anfiteatro Romano",
+		"category": "MONUMENT",
+		"lat": 37.5073989,
+		"lng": 15.0832488,
+		"pageid": 510003
+	},
+	{
+		"id": 8,
+		"name": "Teatro Romano",
+		"category": "BUILDING",
+		"lat": 37.5027848,
+		"lng": 15.0814403,
+		"pageid": 327532
+	},
+	{
+		"id": 9,
+		"name": "Casa di Giovanni Verga",
+		"category": "MUSEUM",
+		"lat": 37.5018598,
+		"lng": 15.0816153,
+		"pageid": 4746562
+	},
+	{
+		"id": 10,
+		"name": "Città della Scienza",
+		"category": "MUSEUM",
+		"lat": 37.5094832,
+		"lng": 15.0971668,
+		"pageid": 5488343
+	},
+	{
+		"id": 11,
+		"name": "Orto Botanico",
+		"category": "MUSEUM",
+		"lat": 37.5157564,
+		"lng": 15.0818014,
+		"pageid": 385445
+	},
+	{
+		"id": 12,
+		"name": "Cattedrale di Sant'Agata",
+		"category": "BUILDING",
+		"lat": 37.5023665,
+		"lng": 15.0857423,
+		"pageid": 327558
+	}
+]
