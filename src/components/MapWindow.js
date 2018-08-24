@@ -17,7 +17,11 @@ class MapWindow extends Component {
 				defaultPosition={new window.google.maps.LatLng(loc.lat,loc.lng)}
 				options={{ closeBoxURL: ``, enableEventPropagation: true, maxWidth: 450}}
 			>
-				<div className="wikiInfo" dangerouslySetInnerHTML={{__html: message}}></div>
+				<div id={`#infoBox${loc.id}`} tabIndex="1" aria-label={`You are on an InfoBox for ${loc.name}`}>
+					<a href="#menuList" tabIndex="1" aria-label="Go back to the menu, following is a Wikipedia extract" className="aria-invisible"/>
+					<label aria-describedby={`wikiBox${loc.id}`}>{`Wikipedia extract on ${loc.name}`}</label>
+					<div className="wikiInfo" tabIndex="1" id={`wikiBox${loc.id}`} dangerouslySetInnerHTML={{__html: message}}></div>
+				</div>
 			</InfoBox>
 		)
 	}

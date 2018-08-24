@@ -3,6 +3,10 @@ import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps'
 
 import MapMarker from './MapMarker'
 
+/* Styles generated using the Google Maps APIs Styling Wizard:
+ * https://mapstyle.withgoogle.com/ */
+const mapStyles = require("./MapStyles.json")
+
 class Map extends Component {
 
 	shouldComponentUpdate(nextProps, nextState){
@@ -27,6 +31,9 @@ class Map extends Component {
 				 })()}
 				 defaultCenter = { { lat: 37.49, lng: 15.01 } }
 				 defaultZoom = { 13 }
+				 defaultOptions = {{gestureHandling: "none",disableDefaultUI: true,
+				 styles: mapStyles
+			 	}}
 			 >
 			 { locations.map(loc => (
 				 <MapMarker

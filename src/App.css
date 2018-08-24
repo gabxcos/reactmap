@@ -7,8 +7,9 @@
 		max-width: 100%;
 		position: fixed;
 		top: 0;
+		transition: left 0.5s ease-out;
 		width: 600px;
-		z-index: 1000;
+		z-index: 98;
 	}
 	.Menu.active {
 		left: 0;
@@ -20,14 +21,19 @@
 		position: fixed;
 		top: 0;
 		width: 70px;
-		z-index: 1001;
+		z-index: 99;
 	}
 	.Menu header .logo {
 		margin: 20px 20px 20px 130px;
 		max-width: calc(100% - 160px);
 	}
 	.Map {
+		height: 100%;
+		left: 0;
+		position: fixed;
+		top: 0;
 		width: 100%;
+		z-index: 1;
 	}
 }
 /****************/
@@ -64,25 +70,21 @@
 	height: 100%;
 }
 .invisible {
+	width: 0;
+	overflow: hidden;
+}
+.aria-invisible {
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px 1px 1px 1px);
+	/* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+}
+/* Hide Wikipedia gallery elements */
+[id^="Galleria"], .gallery {
 	display: none;
-}
-#load {
-	background-color: #ccc;
-	color: black;
-	font-size: 50px;
-	height: 100%;
-	left: 0;
-	position: fixed;
-	text-align: center;
-	top: 0;
-	width: 100%;
-	z-index: 2000;
-}
-#load span {
-	margin-top: -50%;
-	position: relative;
-	top: 50%;
-	left: 0;
 }
 /****************/
 /***** MENU *****/
@@ -92,12 +94,19 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 }
+.Menu::-webkit-scrollbar-button{ display: none; height: 13px; border-radius: 0px; background-color: #AAA; }
+.Menu::-webkit-scrollbar-button:hover{ background-color: #AAA; }
+.Menu::-webkit-scrollbar-thumb{ background-color: #CCC; border-radius: 5px; }
+.Menu::-webkit-scrollbar-thumb:hover{ background-color: #CCC; }
+.Menu::-webkit-scrollbar-track{ background-color: #444444; }
+.Menu::-webkit-scrollbar-track:hover{ background-color: #444444; }
+.Menu::-webkit-scrollbar{ width: 10px; }
 /****************/
 .Menu header .logo {
 	width: calc(100% - 80px);
 }
 /****************/
-.infobox {
+#infobox {
 	background-color: #ccc;
 	border: 4px dotted #aaa;
 	border-radius: 15px;
@@ -135,21 +144,21 @@
 	width: 100%;
 }
 /****************/
-.menuList h3 {
+#menuList h3 {
 	color: #fff;
 	font-size: 25px;
 	font-weight: lighter;
 	margin: 10px;
 }
-.menuList > ul {
+#menuList > ul {
 	list-style-type: none;
 	padding: 0;
 }
-.menuList li a {
+#menuList li a {
 	color: white;
 	text-decoration: none;
 }
-.menuList li h2 {
+#menuList li h2 {
 	background-color: #333;
 	border: 2px dotted #222;
 	border-radius: 10px;
@@ -157,10 +166,10 @@
 	margin: 20px 50px;
 	padding: 10px 0;
 }
-.menuList li.highlight a {
+#menuList li.highlight a {
 	color: black;
 }
-.menuList li.highlight h2 {
+#menuList li.highlight h2 {
 	background-color: #ccc;
 }
 /****************/
@@ -171,7 +180,16 @@
 	border: 1px solid #444;
 	border-radius: 10px;
 	height: 500px;
+	max-width: 70vw;
 	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 	padding: 25px;
 	width: 400px;
 }
+.wikiInfo::-webkit-scrollbar-button{ display: none; height: 13px; border-radius: 0px; background-color: #AAA; }
+.wikiInfo::-webkit-scrollbar-button:hover{ background-color: #AAA; }
+.wikiInfo::-webkit-scrollbar-thumb{ background-color: #CCC; border-radius: 5px; }
+.wikiInfo::-webkit-scrollbar-thumb:hover{ background-color: #CCC; }
+.wikiInfo::-webkit-scrollbar-track{ background-color: #ffffff; }
+.wikiInfo::-webkit-scrollbar-track:hover{ background-color: #444444; }
+.wikiInfo::-webkit-scrollbar{ width: 10px; }

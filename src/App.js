@@ -36,7 +36,7 @@ class App extends Component {
 			.filter(loc => ((loc.category === select || select === "all")))
 
 		return (
-			<main className="App">
+			<main className="App" tabIndex="1" aria-label="ReaCT web app" aria-describedby="infobox">
 				<nav className="Menu">
 					<div className="container">
 						<header>
@@ -52,11 +52,11 @@ class App extends Component {
 								<img
 									className="logo"
 									src="images/logo.png"
-									alt="The logo for the ReaCT app"
+									alt="The logo for the ReaCT app, click to refresh the page"
 								/>
 							</a>
 						</header>
-						<section className="infobox">
+						<section id="infobox">
 							<p>
 								{`ReaCT is a map of some of the most interesting places to visit in Catania (CT).
 									The app is developed using the React JS framework.`}
@@ -64,22 +64,27 @@ class App extends Component {
 						</section>
 						<div>
 							<div className="menuFilter">
+								<label className="aria-invisible" tabIndex="1" id="filter-label">Filter the locations</label>
 								<div className="markerSearch">
-									<h3>Search:</h3>
+									<h3 htmlFor="filterInput">Search:</h3>
 									<input
+										id="filterInput"
 										type="text"
 										placeholder="Search location"
 										value={search}
 										onChange={(event)=>(this.setState({search: event.target.value}))}
+										aria-describedby="filter-label"
 									/>
 								</div>
 								<div className="markerCategory">
-									<h3>Type:</h3>
+									<h3 htmlFor="filterSelect">Category:</h3>
 									<select
+										id="filterSelect"
 										value={select}
 										onChange={(event)=>(this.setState({select: event.target.value}))}
+										aria-describedby="filter-label"
 									>
-										<option value="all">All</option>
+										<option value="all">All categories</option>
 										<option value="SQUARE">Squares</option>
 										<option value="MONUMENT">Monuments</option>
 										<option value="MUSEUM">Museums</option>
@@ -87,13 +92,13 @@ class App extends Component {
 									</select>
 								</div>
 							</div>
-							<div className="menuList">
+							<div id="menuList" tabIndex="1" role="list" aria-label="List of all locations">
 								<h3>Locations:</h3>
 
 									{
 										(showing === undefined || showing.length === 0)
 										?
-										<div> No results found! </div>
+										<div tabIndex="1" aria-label="Warning! The query gave no results. Change the input or refresh the page"> No results found! </div>
 										:
 										<ul>
 										{
@@ -101,9 +106,13 @@ class App extends Component {
 											<li
 											key={loc.id}
 											className={loc.id === highlight ? "highlight" : ""}
-											onClick={()=>{this.setHighlight(loc.id)}}
 											>
-												<a>
+												<a
+													href="#"
+													onClick={()=>{
+														this.setHighlight(loc.id)
+													}}
+												>
 													<h2>{loc.name}</h2>
 												</a>
 											</li>
