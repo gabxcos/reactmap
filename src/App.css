@@ -1,61 +1,69 @@
 /****************/
 /* MOBILE + TABLET (SMALL SCREENS) */
 /****************/
-@media only screen and (max-width: 1000px){
-	.Menu {
-		left: -100%;
-		max-width: 100%;
-		position: fixed;
-		top: 0;
-		transition: left 0.5s ease-out;
-		width: 600px;
-		z-index: 98;
-	}
-	.Menu.active {
-		left: 0;
-	}
-	.Menu header .menuHamburger {
-		height: auto;
-		left: 0;
-		padding: 30px;
-		position: fixed;
-		top: 0;
-		width: 70px;
-		z-index: 99;
-	}
-	.Menu header .logo {
-		margin: 20px 20px 20px 130px;
-		max-width: calc(100% - 160px);
-	}
-	.Map {
-		height: 100%;
-		left: 0;
-		position: fixed;
-		top: 0;
-		width: 100%;
-		z-index: 1;
-	}
+@media only screen and (max-width: 1000px) {
+  .Menu {
+    left: -100%;
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    transition: left 0.5s ease-out;
+    width: 600px;
+    z-index: 98;
+  }
+
+  .Menu.active {
+    left: 0;
+  }
+
+  .Menu header .menuHamburger {
+    height: auto;
+    left: 0;
+    padding: 30px;
+    position: fixed;
+    top: 0;
+    width: 70px;
+    z-index: 99;
+  }
+
+  .Menu header .logo {
+    margin: 20px 20px 20px 130px;
+    max-width: calc(100% - 160px);
+  }
+
+  .Map {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
 }
 /****************/
 /* DESKTOP + TV (BIG SCREENS)*/
 /****************/
-@media only screen and (min-width: 1001px){
-	.App {
-		display: flex;
-		flex-flow: row wrap;
-	}
-	.Menu {
-		flex: 1 0px;
-	}
-	.Menu header .menuHamburger {
-		display: none;
-	}
-	.Menu header .logo {
-		margin: 40px 40px 0;
-	}
-	.Map {
-		flex: 2 0px;
-	}
+@media only screen and (min-width: 1001px) {
+  .App {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .Menu {
+    flex: 1 0px;
+  }
+
+  .Menu header .menuHamburger {
+    display: none;
+  }
+
+  .Menu header .logo {
+    margin: 40px 40px 0;
+  }
+
+  .Map {
+    flex: 2 0px;
+  }
 }
 /****************/
 /* GENERAL CSS FOR ALL VIEWPORTS */
@@ -63,16 +71,19 @@
 /***** APP *****/
 /****************/
 .App {
-	height: 100vh;
-	width: 100%;
+  height: 100vh;
+  width: 100%;
 }
+
 .Menu, .Map {
-	height: 100%;
+  height: 100%;
 }
+
 .invisible {
-	width: 0;
-	overflow: hidden;
+  width: 0;
+  overflow: hidden;
 }
+/* Hide aria-only elements' visuals from the page */
 .aria-invisible {
 	position: absolute !important;
 	height: 1px;
@@ -94,98 +105,134 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-.Menu::-webkit-scrollbar-button{ display: none; height: 13px; border-radius: 0px; background-color: #AAA; }
-.Menu::-webkit-scrollbar-button:hover{ background-color: #AAA; }
-.Menu::-webkit-scrollbar-thumb{ background-color: #CCC; border-radius: 5px; }
-.Menu::-webkit-scrollbar-thumb:hover{ background-color: #CCC; }
-.Menu::-webkit-scrollbar-track{ background-color: #444444; }
-.Menu::-webkit-scrollbar-track:hover{ background-color: #444444; }
-.Menu::-webkit-scrollbar{ width: 10px; }
+/* Styling for the scrollbar generated with Darryl Huffman's "Scrollbar Generator":
+ * https://darrylhuffman.com/sites/Scrollbar-gen/ */
+.Menu::-webkit-scrollbar-button {
+  display: none;
+  height: 13px;
+  border-radius: 0px;
+  background-color: #AAA;
+}
+
+.Menu::-webkit-scrollbar-button:hover {
+  background-color: #AAA;
+}
+
+.Menu::-webkit-scrollbar-thumb {
+  background-color: #CCC;
+  border-radius: 5px;
+}
+
+.Menu::-webkit-scrollbar-thumb:hover {
+  background-color: #CCC;
+}
+
+.Menu::-webkit-scrollbar-track {
+  background-color: #444444;
+}
+
+.Menu::-webkit-scrollbar-track:hover {
+  background-color: #444444;
+}
+
+.Menu::-webkit-scrollbar {
+  width: 10px;
+}
 /****************/
 .Menu header .logo {
-	width: calc(100% - 80px);
+  width: calc(100% - 80px);
 }
 /****************/
 #infobox {
-	background-color: #ccc;
-	border: 4px dotted #aaa;
-	border-radius: 15px;
-	font-style: oblique;
-	font-weight: lighter;
-	margin: 20px 50px 0;
-	padding: 10px;
-	width: calc(100% - 128px);
+  background-color: #ccc;
+  border: 4px dotted #aaa;
+  border-radius: 15px;
+  font-style: oblique;
+  font-weight: lighter;
+  margin: 20px 50px 0;
+  padding: 10px;
+  width: calc(100% - 128px);
 }
 /****************/
 .menuFilter {
-	display: flex;
-	flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
+
 .menuFilter > div {
-	flex: 1 auto;
-	padding: 20px;
+  flex: 1 auto;
+  padding: 20px;
 }
+
 .menuFilter h3 {
-	color: #fff;
-	font-size: 25px;
-	font-weight: lighter;
-	margin: 10px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: lighter;
+  margin: 10px;
 }
+
 .Menu input, .Menu select {
-	border: 0;
-	border-radius: 10px;
-	font-size: 16px;
-	font-style: oblique;
-	height: 45px;
-	max-width: calc(100% - 50px);
-	min-width: 180px;
-	padding: 0;
-	text-align: center;
-	width: 100%;
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  font-style: oblique;
+  height: 45px;
+  max-width: calc(100% - 50px);
+  min-width: 180px;
+  padding: 0;
+  text-align: center;
+  width: 100%;
 }
 /****************/
 #menuList h3 {
-	color: #fff;
-	font-size: 25px;
-	font-weight: lighter;
-	margin: 10px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: lighter;
+  margin: 10px;
 }
+
 #menuList > ul {
-	list-style-type: none;
-	padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
+
 #menuList li a {
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
+
 #menuList li h2 {
-	background-color: #333;
-	border: 2px dotted #222;
-	border-radius: 10px;
-	font-weight: lighter;
-	margin: 20px 50px;
-	padding: 10px 0;
+  background-color: #333;
+  border: 2px dotted #222;
+  border-radius: 10px;
+  font-weight: lighter;
+  margin: 20px 50px;
+  padding: 10px 0;
 }
+
 #menuList li.highlight a {
-	color: black;
+  color: black;
 }
+
 #menuList li.highlight h2 {
-	background-color: #ccc;
+  background-color: #ccc;
 }
 /****************/
 /***** MAP *****/
 /****************/
 .wikiInfo {
-	background-color: white;
-	border: 1px solid #444;
-	border-radius: 10px;
-	height: 500px;
-	max-width: 70vw;
-	overflow-y: auto;
-	-webkit-overflow-scrolling: touch;
-	padding: 25px;
-	width: 400px;
+  background-color: white;
+  border: 1px solid #444;
+  border-radius: 10px;
+  height: 500px;
+  max-width: 70vw;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 25px;
+  width: 400px;
 }
+/* Styling for the scrollbar generated with Darryl Huffman's "Scrollbar Generator":
+ * https://darrylhuffman.com/sites/Scrollbar-gen/ */
 .wikiInfo::-webkit-scrollbar-button{ display: none; height: 13px; border-radius: 0px; background-color: #AAA; }
 .wikiInfo::-webkit-scrollbar-button:hover{ background-color: #AAA; }
 .wikiInfo::-webkit-scrollbar-thumb{ background-color: #CCC; border-radius: 5px; }
