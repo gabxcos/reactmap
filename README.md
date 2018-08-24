@@ -57,5 +57,5 @@ The structure was left quite simple for the sake of handling as few components' 
 - utilities used:
     - Google Maps APIs Styling Wizard ([here](https://mapstyle.withgoogle.com/)) for the map's styling
     - Darryl Huffman's "Scrollbar Generator" ([here](https://darrylhuffman.com/sites/Scrollbar-gen/)) for the scrollbars' styling
-		- ICO converter ([here](https://www.icoconverter.com/)) for the app's favicon
+    - ICO converter ([here](https://www.icoconverter.com/)) for the app's favicon
 - logo, menu icon and favicon designed by me
