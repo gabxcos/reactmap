@@ -14,13 +14,18 @@ The user will find a menu (either on the left side or on popup, depending on the
 All the locations are also shown as markers on a map, loaded with the `Google Maps API` through the `react-google-maps` library (see Credits).
 Clicking on either a menu item or a map marker will highlight them (respectively, with a style change or an animation) and popup an infoWindow on the map, with an excerpt on the location taken from `Wikipedia` (italian version) with fetch requests.
 
-## How to test
-This app can be easily tested in 3 steps:
+## How to run
+To install the app you simply need to:
 1. Clone this repository on your machine, open the terminal and `cd` into its folder
 2. run `npm install`
-3. run `npm start`
+Then to run it, you have two options:
 
-The app will be available on your browser at address `localhost:3000`
+- Development Mode:
+		- run `npm start`
+		- The app will be available on your browser at address `localhost:3000`
+- Production Mode:
+		- run `npm run deploy`
+		- The app will be available on your browser at address `localhost:5000`
 
 ## Components structure
 The following tree structure is a preview of the parent-children relations for the React components
@@ -46,7 +51,7 @@ The structure was left quite simple for the sake of handling as few components' 
 6. Accessibility: is the website accessible to screen reader users or visually impaired ones?
     - Check: the website's logic is clear and it's fully navigable through a screen reader
 7. Offline Use: does the app have offline functionalities?
-    - Check: the website gets cached by the service worker provided by `create-react-app`
+    - Check: the website gets cached by the service worker provided by `create-react-app` if you run the Production build (check above: `How to run`)
 8. Application Architecture: is React used in a proper manner?
     - Check: the app uses a bare minimum amount of components to handle the logic and uses the React functions (`render`, `componentDidMount`, `componentDidUpdate`, `shouldComponentUpdate`, `setState`) in the suggested way
 
@@ -57,5 +62,7 @@ The structure was left quite simple for the sake of handling as few components' 
 - utilities used:
     - Google Maps APIs Styling Wizard ([here](https://mapstyle.withgoogle.com/)) for the map's styling
     - Darryl Huffman's "Scrollbar Generator" ([here](https://darrylhuffman.com/sites/Scrollbar-gen/)) for the scrollbars' styling
-    - ICO converter ([here](https://www.icoconverter.com/)) for the app's favicon
+		- ICO converter ([here](https://www.icoconverter.com/)) for the app's favicon
+		- HTTP Request Blocker ([here](https://chrome.google.com/webstore/detail/http-request-blocker/eckpjmeijpoipmldfbckahppeonkoeko)) to test the app functionalities following fetch errors
+		- Special thanks to [Stack Overflow](https://stackoverflow.com/) for always being there when a developer most needs it
 - logo, menu icon and favicon designed by me
