@@ -15,7 +15,7 @@ class MapMarker extends Component {
   setFocus = () => {
     const { highlight, loc } = this.props;
     if (highlight) {
-      let box = document.getElementById(`#infoBox${loc.id}`);
+      let box = document.getElementById(`infoBox${loc.id}`);
       if (box === undefined || box == null) setTimeout(this.setFocus, 500);
       else box.focus();
     }
@@ -31,7 +31,7 @@ class MapMarker extends Component {
     return (
       /* The marker is animated when highlighted, and on click it gets highlighted if it wasn't */
       <Marker
-        tabIndex="1"
+        tabIndex="0"
         aria-label={`Map marker for ${loc.name}`}
         position={{ lat: loc.lat, lng: loc.lng }}
         animation={highlight ? window.google.maps.Animation.BOUNCE : ""}

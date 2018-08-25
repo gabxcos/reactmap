@@ -10,15 +10,34 @@ class App extends Component {
 	 - allLocations: array to hold all the locations from the fetch operation
 	 - search and select: the queries to filter the locations
 	 - highlight: the id of the highlighted location, initialized to a dummy unused value
+	 - gmapsStatus: this variable lets the component know what to render depending on whether the
+	 	 Google Maps script loaded or if there was an error
 	 */
   state = {
     allLocations: [],
     search: "",
     select: "all",
-    highlight: 0
+    highlight: 0,
+		gmapsStatus: 'loading'
   };
-  /* The App fetches all locations from a JSON files, processes them, and inserts the array in its state */
+
   componentDidMount() {
+		/* This block adds the Google Maps script and listens for script loading and errors */
+		new Promise(function(resolve, reject){
+			let script = document.createElement('script')
+			script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDPd4HcMgw5Xkiv-LAbAm5Mr6XdQMx1Vfg&v=3.exp`
+			script.async = true
+			script.addEventListener('load', ()=>(resolve()))
+			script.addEventListener('error', ()=>(reject()))
+			document.body.appendChild(script)
+		})
+		.then(()=>(this.setState({'gmapsStatus': 'done'})))
+		.catch(()=>{
+			this.setState({'gmapsStatus': 'error'})
+			this.setErrorFocus()
+		})
+
+		/* This block fetches the locations from a JSON file acting as the database */
     fetch("./db/locations.json", {
       headers: {
         "Content-Type": "application/json",
@@ -32,10 +51,45 @@ class App extends Component {
       });
   }
 
+	/* This function sets the app contents depending on the load-state of the map */
+	setMapContent = (status) => {
+		switch(status){
+			case 'loading':
+				return <div className="Map" id="loading">
+					<div>
+						<span>Loading...</span>
+					</div>
+				</div>
+			case 'error':
+			default:
+				return <div className="Map" id="error" tabIndex="0" aria-describedby="errorMessage">
+						<div id="errorMessage">
+							<p className="errorHeading">There was an error!</p>
+							<p>{'There was an error with the API or the app took too much time to load. Please check your connection and refresh.'}</p>
+						</div>
+				</div>
+			}
+		}
+
+	/* This function sets focus on the error message as soon as it is loaded, for screen reader users */
+	setErrorFocus = () => {
+    	let error = document.getElementById(`error`);
+      if (error === undefined || error == null) setTimeout(this.setErrorFocus, 500);
+      else error.focus();
+    }
+
   setHighlight = num => this.setState({ highlight: num });
 
   render() {
-    const { highlight, allLocations, search, select } = this.state;
+    const { highlight, allLocations, search, select, gmapsStatus } = this.state;
+		/* The app waits 30s before deciding there was an un-caught error with the script loading */
+		setTimeout(()=>
+		{
+			if(this.state.gmapsStatus==='loading'){
+			 this.setState({gmapsStatus: 'error'})
+			 this.setErrorFocus()
+		 	}
+		},30000)
     /* Filters the array according to the queries, uses an empty array while the App is still fetching */
     let showing =
       allLocations === undefined || allLocations.length === 0
@@ -48,7 +102,7 @@ class App extends Component {
       /* First element in the accessibility tree, provides a fast description */
       <main
         className="App"
-        tabIndex="1"
+        tabIndex="0"
         aria-label="ReaCT web app"
         aria-describedby="infobox"
       >
@@ -85,7 +139,7 @@ class App extends Component {
               <div className="menuFilter">
                 <label
                   className="aria-invisible"
-                  tabIndex="1"
+                  tabIndex="0"
                   id="filter-label"
                 >
                   Filter the locations
@@ -123,7 +177,7 @@ class App extends Component {
               </div>
               <div
                 id="menuList"
-                tabIndex="1"
+                tabIndex="0"
                 role="list"
                 aria-label="List of all locations"
               >
@@ -132,7 +186,7 @@ class App extends Component {
                 {/* Otherwise, it maps the array and applies different visuals to the eventual highlighted item */}
                 {showing === undefined || showing.length === 0 ? (
                   <div
-                    tabIndex="1"
+                    tabIndex="0"
                     aria-label="Warning! The query gave no results. Change the input or refresh the page"
                   >
                     {" "}
@@ -162,11 +216,16 @@ class App extends Component {
           </div>
         </nav>
         {/* The Map component and its children, all in the `components` folder. The Map uses only the showing locations from the filtering */}
-        <Map
-          locations={showing}
-          highlight={highlight}
-          func={this.setHighlight}
-        />
+				{
+					gmapsStatus === 'done' ?
+					<Map
+						locations={showing}
+						highlight={highlight}
+						func={this.setHighlight}
+					/>
+					:
+					this.setMapContent(gmapsStatus)
+				}
       </main>
     );
   }

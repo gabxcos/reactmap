@@ -220,6 +220,24 @@
 /****************/
 /***** MAP *****/
 /****************/
+.Map {
+	transition: background-color 1.5s linear;
+	-webkit-transition: background-color 1s linear;
+}
+.Map#loading div, .Map#error div{
+	color: white;
+	font-size: 30px;
+	padding: 50px;
+	position: relative;
+	top: 40%;
+}
+.Map#loading {
+	background-color: #9cf;
+}
+.Map#error {
+	background-color: #833;
+}
+/****************/
 .wikiInfo {
   background-color: white;
   border: 1px solid #444;

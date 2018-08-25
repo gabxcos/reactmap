@@ -30,10 +30,10 @@ class MapWindow extends Component {
         {/* The infobox's contents include a link to let screen reader's users go back to the locations list */}
         <div
           id={`#infoBox${loc.id}`}
-          tabIndex="1"
+          tabIndex="0"
           aria-label={`You are on an InfoBox for ${loc.name}`}
         >
-          <a href="#menuList" tabIndex="1" className="aria-invisible">
+          <a href="#menuList" tabIndex="0" className="aria-invisible">
             Go back to the menu, following is a Wikipedia extract
           </a>
           <label
@@ -42,7 +42,7 @@ class MapWindow extends Component {
           >{`Wikipedia extract on ${loc.name}`}</label>
           <div
             className="wikiInfo"
-            tabIndex="1"
+            tabIndex="0"
             id={`wikiBox${loc.id}`}
             dangerouslySetInnerHTML={{ __html: message }}
           />

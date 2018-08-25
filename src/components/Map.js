@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 /* Thanks to Tom Chen for providing an easy-to-use React component to include Google Maps' API:
  * https://tomchentw.github.io/react-google-maps/ */
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
+import { withGoogleMap, GoogleMap } from "react-google-maps";
 
 import MapMarker from "./MapMarker";
 
@@ -36,43 +36,37 @@ class Map extends Component {
     const { locations, highlight, func } = this.props;
     /* This is the suggested way to initialize this component, as
 		 * in Tom Chen's example usage of his API */
-    const GoogleMapWrapper = withScriptjs(
-      withGoogleMap(props => (
-        /* UI and gestures are disabled from the map, as they can only provide confusion */
-        <GoogleMap
-          ref={map =>
-            map &&
-            (() => {
-              this.fitMap(map);
-            })()
-          }
-          defaultCenter={{ lat: 37.49, lng: 15.01 }}
-          defaultZoom={13}
-          defaultOptions={{
-            gestureHandling: "none",
-            disableDefaultUI: true,
-            styles: mapStyles
-          }}
-        >
-          {/* For each location, a Marker is rendered on the map. The marker also know if it's linked to the highlighted location or not */}
-          {locations.map(loc => (
-            <MapMarker
-              key={loc.name}
-              highlight={loc.id === highlight ? true : false}
-              loc={loc}
-              func={func}
-            />
-          ))}
-        </GoogleMap>
-      ))
-    );
+    const GoogleMapWrapper = withGoogleMap(props => (
+      /* UI and gestures are disabled from the map, as they can only provide confusion */
+      <GoogleMap
+        ref={map =>
+          map &&
+          (() => {
+            this.fitMap(map);
+          })()
+        }
+        defaultCenter={{ lat: 37.49, lng: 15.01 }}
+        defaultZoom={13}
+        defaultOptions={{
+          gestureHandling: "none",
+          disableDefaultUI: true,
+          styles: mapStyles
+        }}
+      >
+        {/* For each location, a Marker is rendered on the map. The marker also know if it's linked to the highlighted location or not */}
+        {locations.map(loc => (
+          <MapMarker
+            key={loc.name}
+            highlight={loc.id === highlight ? true : false}
+            loc={loc}
+            func={func}
+          />
+        ))}
+      </GoogleMap>
+    ));
 
     return (
       <GoogleMapWrapper
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPd4HcMgw5Xkiv-LAbAm5Mr6XdQMx1Vfg&v=3.exp"
-        loadingElement={
-          <div className="loader" style={{ height: "100vh", width: "100%" }} />
-        }
         containerElement={
           <section
             className="Map"
